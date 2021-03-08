@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:50 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/07 19:04:25 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/08 09:51:26 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ void	lst_clear(t_list **lst)
 	*lst = NULL;
 }
 
-void	print_list(t_list *lst)
+void	remove_top(t_list **lst)
 {
-	while (lst)
-	{
-		printf("%d ", lst->data);
-		lst = lst->next;
-	}
-	printf("\n");
+	t_list *tmp;
+
+	tmp = (*lst)->next;
+	free(*lst);
+	*lst = tmp;
 }
 
 t_list	*init_list(int data)

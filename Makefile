@@ -6,7 +6,7 @@
 #    By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/07 18:52:30 by erlajoua          #+#    #+#              #
-#    Updated: 2021/03/07 19:00:18 by erlajoua         ###   ########.fr        #
+#    Updated: 2021/03/08 09:51:45 by erlajoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME = push_swap
 SRCS = 	srcs/ft_atoi.c \
 		srcs/ft_list.c \
 		srcs/main.c \
-		srcs/parsing.c
+		srcs/parsing.c \
+		srcs/op_push.c \
+		srcs/print_list.c
 
 INCL =	headers/push_swap.h
 
