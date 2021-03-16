@@ -1,35 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_push.c                                          :+:      :+:    :+:   */
+/*   op_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 09:50:59 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/08 11:28:11 by erlajoua         ###   ########.fr       */
+/*   Created: 2021/03/08 11:00:31 by erlajoua          #+#    #+#             */
+/*   Updated: 2021/03/08 11:13:54 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	pa(t_list **a, t_list **b)
+void	ft_swap(int *a, int *b)
 {
-	if (*b == NULL)
-		return ;
-	if (*a == NULL)
-		*a = init_list((*b)->data);
-	else
-		push_front(a, (*b)->data);
-	remove_top(b);
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-void	pb(t_list **a, t_list **b)
+void	sa(t_list **a)
 {
-	if (*a == NULL)
+	t_list	*curr;
+	t_list	*next;
+
+	if (*a == NULL || (*a)->next == NULL)
 		return ;
-	if (*b == NULL)
-		*b = init_list((*a)->data);
-	else
-		push_front(b, (*a)->data);
-	remove_top(a);
+	curr = *a;
+	next = (*a)->next;
+	ft_swap(&(curr->data), &(next->data));
+}
+
+void	sb(t_list **b)
+{
+	t_list	*curr;
+	t_list	*next;
+
+	if (*b == NULL || (*b)->next == NULL)
+		return ;
+	curr = *b;
+	next = (*b)->next;
+	ft_swap(&(curr->data), &(next->data));
+}
+
+void	ss(t_list **a, t_list **b)
+{
+	sa(a);
+	sb(b);
 }

@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 09:51:31 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/08 10:00:28 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/08 11:18:27 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	print_list(t_list **a, t_list **b)
 	{
 		if (lst_a)
 		{
-			printf(" %d   ", lst_a->data);
+			printf("%d     ", lst_a->data);
 			lst_a = lst_a->next;
 		}
 		else
-			printf("   ");
+			printf("     ");
 		if (lst_b)
 		{
 			printf("%d\n", lst_b->data);

@@ -6,7 +6,7 @@
 #    By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/07 18:52:30 by erlajoua          #+#    #+#              #
-#    Updated: 2021/03/08 09:51:45 by erlajoua         ###   ########.fr        #
+#    Updated: 2021/03/08 18:16:18 by erlajoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,9 @@ SRCS = 	srcs/ft_atoi.c \
 		srcs/main.c \
 		srcs/parsing.c \
 		srcs/op_push.c \
+		srcs/op_swap.c \
+		srcs/op_rotate.c \
+		srcs/op_rrotate.c \
 		srcs/print_list.c
 
 INCL =	headers/push_swap.h
