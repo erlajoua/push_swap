@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 18:05:39 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 15:13:36 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/18 15:39:44 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	rra(t_list **a)
 	(*a)->prev = newelem;
 	newelem->next = (*a);
 	*a = newelem;
+	printf("rra\n");
 }
 
 void	rrb(t_list **b)
@@ -44,10 +45,12 @@ void	rrb(t_list **b)
 	(*b)->prev = newelem;
 	newelem->next = (*b);
 	*b = newelem;
+	printf("rrb\n");
 }
 
 void	rrr(t_list **a, t_list **b)
 {
 	rra(a);
 	rrb(b);
+	printf("rrr\n");
 }

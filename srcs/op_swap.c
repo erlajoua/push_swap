@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:00:31 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/08 11:13:54 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/18 15:40:12 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	sa(t_list **a)
 	curr = *a;
 	next = (*a)->next;
 	ft_swap(&(curr->data), &(next->data));
+	printf("sa\n");
 }
 
 void	sb(t_list **b)
@@ -43,10 +44,12 @@ void	sb(t_list **b)
 	curr = *b;
 	next = (*b)->next;
 	ft_swap(&(curr->data), &(next->data));
+	printf("sb\n");
 }
 
 void	ss(t_list **a, t_list **b)
 {
 	sa(a);
 	sb(b);
+	printf("ss\n");
 }

@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:08:03 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/08 17:58:07 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/18 15:39:21 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	rb(t_list **b)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = last;
+	printf("rb\n");
 }
 
 void	ra(t_list **a)
@@ -44,10 +45,12 @@ void	ra(t_list **a)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = last;
+	printf("ra\n");
 }
 
 void	rr(t_list **a, t_list **b)
 {
 	ra(a);
 	rb(b);
+	printf("rrr\n");
 }

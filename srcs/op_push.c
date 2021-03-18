@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 09:50:59 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/08 11:28:11 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/18 15:38:57 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	pa(t_list **a, t_list **b)
 	else
 		push_front(a, (*b)->data);
 	remove_top(b);
+	printf("pa\n");
 }
 
 void	pb(t_list **a, t_list **b)
@@ -32,4 +33,5 @@ void	pb(t_list **a, t_list **b)
 	else
 		push_front(b, (*a)->data);
 	remove_top(a);
+	printf("pb\n");
 }
