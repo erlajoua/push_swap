@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 18:05:39 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/08 18:38:19 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/18 13:41:43 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,36 @@
 void	rra(t_list **a)
 {
 	t_list	*tmp;
-	t_list	*curr;
+	t_list	*newelem;
+	t_list	*pro;
 
-	curr = *a;
-	tmp = NULL;
-	while (curr)
-	{
-		tmp = curr->prev;
-		curr->prev = curr->next;
-		curr->next = tmp;
-		curr = curr->prev;
-	}
-	if (tmp)
-		*a = tmp->prev;
+	tmp = *a;
+	while (tmp->next)
+		tmp = tmp->next;
+	printf("arrivee rra\n");
+	pro = tmp->prev;
+	pro->next = NULL;
+	newelem = init_list(tmp->data);
+	free(tmp);
+	(*a)->prev = newelem;
+	newelem->next = (*a);
+	*a = newelem;
 }
 
 void	rrb(t_list **b)
 {
 	t_list	*tmp;
-	t_list	*curr;
+	t_list	*newelem;
 
-	tmp = NULL;
-	curr = *b;
-	while (curr)
-	{
-		tmp = curr->prev;
-		curr->prev = curr->next;
-		curr->next = tmp;
-		curr = curr->prev;
-	}
-	if (tmp)
-		*b = tmp->prev;
+	tmp = *b;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->prev->next = NULL;
+	newelem = init_list(tmp->data);
+	free(tmp);
+	(*b)->prev = newelem;
+	newelem->next = (*b);
+	*b = newelem;
 }
 
 void	rrr(t_list **a, t_list **b)

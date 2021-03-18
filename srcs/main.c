@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:53 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/07 19:19:45 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/16 14:28:23 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int		main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	if (ac < 2)
+	{
+		printf("usage %s [integer1] [integer2]\n", av[0]);
 		return (0);
+	}
 	parsing(ac, av, &a, &b);
 	lst_clear(&a);
 	lst_clear(&b);
