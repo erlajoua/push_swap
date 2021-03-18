@@ -22,7 +22,7 @@ void	rra(t_list **a)
 	while (tmp->next)
 		tmp = tmp->next;
 	pro = tmp;
-	pro->next = NULL;
+	pro->prev->next = NULL;
 	newelem = init_list(tmp->data);
 	free(tmp);
 	(*a)->prev = newelem;
