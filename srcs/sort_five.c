@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 15:13:12 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/18 18:52:53 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	sort_five(t_list **a, t_list **b)
 	t_list	*new;
 
 	j = 2;
-	pb(a, b);
-	pb(a, b);
+	pb(a, b, 0);
+	pb(a, b, 0);
 	sort_three(a);
 	print_list(a, b);
 	if ((*b)->data < (*b)->next->data)
@@ -50,19 +50,19 @@ void	sort_five(t_list **a, t_list **b)
 		ref = accept(a, top->data);
 		if (new->data == ref)
 		{
-			pa(a, b);
+			pa(a, b, 0);
 			j--;
 			top = top->next;
 		}
 		else
-			ra(a);
+			ra(a, 0);
 	}
 	int *tab = list_to_tab(a);
 	int len = list_len(a);
 	int index_min = find_index_min(tab, len);
 	while (index_min != 0)
 	{
-		ra(a);
+		ra(a, 0);
 		index_min--;
 	}
 	free(tab);
