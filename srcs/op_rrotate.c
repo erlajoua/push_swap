@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 18:05:39 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 13:41:43 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/18 15:13:36 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	rra(t_list **a)
 	tmp = *a;
 	while (tmp->next)
 		tmp = tmp->next;
-	printf("arrivee rra\n");
-	pro = tmp->prev;
+	pro = tmp;
 	pro->next = NULL;
 	newelem = init_list(tmp->data);
 	free(tmp);
@@ -39,7 +38,7 @@ void	rrb(t_list **b)
 	tmp = *b;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->prev->next = NULL;
+	tmp->next = NULL;
 	newelem = init_list(tmp->data);
 	free(tmp);
 	(*b)->prev = newelem;

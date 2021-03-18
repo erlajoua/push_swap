@@ -15,6 +15,7 @@ typedef struct s_list	t_list;
 
 int			ft_atoi(char *str);
 int			list_len(t_list **lst);
+int			find_index_min(int *tab, int len);
 int			*list_to_tab(t_list **lst);
 void		push_back(t_list **lst, int data);
 void		push_front(t_list **lst, int data);
