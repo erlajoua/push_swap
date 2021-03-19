@@ -6,7 +6,7 @@
 #    By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/07 18:52:30 by erlajoua          #+#    #+#              #
-#    Updated: 2021/03/18 11:47:41 by erlajoua         ###   ########.fr        #
+#    Updated: 2021/03/19 09:47:54 by erlajoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ SRCS = 	srcs/ft_atoi.c \
 		srcs/ft_list.c \
 		srcs/ft_list2.c \
 		srcs/main.c \
+		srcs/display.c \
 		srcs/parsing.c \
+		srcs/is_char.c \
+		srcs/ft_split.c \
 		srcs/manage_tab.c \
 		srcs/op_push.c \
 		srcs/op_swap.c \

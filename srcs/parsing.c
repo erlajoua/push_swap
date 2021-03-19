@@ -6,27 +6,63 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:55 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 18:56:22 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/19 09:50:48 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-int		is_space(char *str)
+int		check_str(char *str)
 {
 	int i;
 
 	i = 0;
+	if (str[i] == '+' || str[i] == '-' || is_num(str[i]))
+		i++;
 	while (str[i])
 	{
-		if (str[i] == ' ')
-			return (1);
+		if (!(is_num(str[i])))
+			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int		parse_arg(char *str, t_list **a)
+{
+	char	**strs;
+	int		i;
+	int		flag;
+
+	flag = 1;
+	i = 0;
+	if (is_space(str))
+	{
+		strs = ft_split(str, ' ');
+		while (strs[i])
+		{
+			if (!(check_str(strs[i])))
+				flag = 0;
+			push_back(a, ft_atoi(strs[i]));
+			free(strs[i]);
+			i++;
+		}
+		free(strs);
+	}
+	else if (check_str(str))
+		push_back(a, ft_atoi(str));
+	else
+		flag = 0;
+	return (flag);
+}
+
+int		parsing_error(void)
+{
+	ft_putstr_fd("parsing error\n", STDERR_FILENO);
 	return (0);
 }
 
-void	parsing(int ac, char **av, t_list **a, t_list **b)
+int		parsing(int ac, char **av, t_list **a, t_list **b)
 {
 	int		i;
 	int		j;
@@ -35,20 +71,16 @@ void	parsing(int ac, char **av, t_list **a, t_list **b)
 	i = 1;
 	while (i < ac)
 	{
-		push_back(a, ft_atoi(av[i]));
+		if (!(parse_arg(av[i], a)))
+			return (parsing_error());
 		i++;
 	}
+	print_list(a, b);
 	/*if (ac - 1 == 3)
 		sort_three(a);
 	else if (ac - 1 == 5)
 		sort_five(a, b);
 	else
 		sort_general(a, b);*/
-	print_list(a, b);
-	rra(a, 0);
-	print_list(a, b);
-	rra(a, 0);
-	print_list(a, b);
-	rra(a, 0);
-	print_list(a, b);
+	return (1);
 }
