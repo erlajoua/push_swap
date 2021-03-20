@@ -12,8 +12,11 @@
 
 NAME 		=	checker
 
-SRCS 		= 	srcs/main.c		\
-				srcs/parsing.c	\
+SRCS 		= 	srcs/main.c					\
+				srcs/parsing.c				\
+				srcs/get_next_line.c		\
+				srcs/get_next_line_utils.c	\
+				srcs/utils.c						\
 
 INCL 		=	headers/checker.h
 
