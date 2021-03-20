@@ -27,6 +27,7 @@ void	rb(t_list **b, int option)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = last;
+	last->prev = tmp;
 	if (option == 1)
 		printf("rb\n");
 }
@@ -46,6 +47,7 @@ void	ra(t_list **a, int option)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = last;
+	last->prev = tmp;
 	if (option == 1)
 		printf("ra\n");
 }
