@@ -18,9 +18,9 @@ void	rra(t_list **a, int option)
 	t_list	*newelem;
 	t_list	*pro;
 
-	tmp = *a;
-	if (!(tmp->next))
+	if (!*a || !(*a)->next)
 		return ;
+	tmp = *a;
 	while (tmp->next)
 		tmp = tmp->next;
 	pro = tmp;
@@ -39,9 +39,9 @@ void	rrb(t_list **b, int option)
 	t_list	*tmp;
 	t_list	*newelem;
 
-	tmp = *b;
-	if (!(tmp->next))
+	if (!*b || !(*b)->next)
 		return ;
+	tmp = *b;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = NULL;

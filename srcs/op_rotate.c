@@ -17,7 +17,7 @@ void	rb(t_list **b, int option)
 	t_list	*last;
 	t_list	*tmp;
 
-	if ((*b)->next == NULL)
+	if (*b == NULL || (*b)->next == NULL)
 		return ;
 	tmp = (*b)->next;
 	last = init_list((*b)->data);
@@ -36,7 +36,7 @@ void	ra(t_list **a, int option)
 	t_list	*last;
 	t_list	*tmp;
 
-	if ((*a)->next == NULL)
+	if (*a == NULL || (*a)->next == NULL)
 		return ;
 	tmp = (*a)->next;
 	last = init_list((*a)->data);
@@ -55,5 +55,5 @@ void	rr(t_list **a, t_list **b, int option)
 	ra(a, 0);
 	rb(b, 0);
 	if (option == 1)
-		printf("rrr\n");
+		printf("rr\n");
 }
