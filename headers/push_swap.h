@@ -13,6 +13,21 @@ struct					s_list
 };
 typedef struct s_list	t_list;
 
+struct					s_algo
+{
+	int *sort;
+	int chunk_nb;
+	int chunk_size;
+	int	current;
+	int h_first;
+	int h_second;
+	int first_pos;
+	int second_pos;
+	int a_len;
+};
+typedef struct s_algo	t_algo;
+
+
 int			ft_atoi(char *str);
 int			list_len(t_list **lst);
 int			find_index_min(int *tab, int len);
@@ -44,5 +59,9 @@ void		ft_swap(int *a, int *b);
 void		ft_putstr_fd(char *str, int fd);
 char		**ft_split(char const *s, char c);
 t_list		*init_list(int data);
+
+void    algo(t_list **a, t_list **b, int size);
+int		is_smaller(t_list **lst, int value);
+int		is_bigger(t_list **lst, int value);
 
 #endif

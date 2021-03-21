@@ -26,3 +26,35 @@ int		list_len(t_list **lst)
 	}
 	return (i);
 }
+
+int		is_smaller(t_list **lst, int value)
+{
+	t_list *tmp;
+
+	if (*lst == NULL)
+		return (1);
+	tmp = *lst;
+	while (tmp)
+	{
+		if (tmp->data < value)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+int		is_bigger(t_list **lst, int value)
+{
+	t_list *tmp;
+
+	if (*lst == NULL)
+		return (1);
+	tmp = *lst;
+	while (tmp->next)
+	{
+		if (tmp->data > value)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}

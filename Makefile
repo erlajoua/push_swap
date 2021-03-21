@@ -28,14 +28,15 @@ SRCS = 	srcs/ft_atoi.c \
 		srcs/sort_three.c \
 		srcs/sort_five.c \
 		srcs/sort_general.c \
-		srcs/print_list.c
+		srcs/print_list.c \
+		srcs/algo.c
 
 INCL =	headers/push_swap.h
 
 OBJS = $(SRCS:.c=.o)
 
 CC = clang
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra #-fsanitize=address
 
 %.o:		%.c
 			$(CC) $(FLAGS) -c $< -o $@

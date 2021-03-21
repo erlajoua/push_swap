@@ -39,7 +39,8 @@ PUSH_SRCS	=	$(addprefix $(PUSHSWAP)srcs/, ft_atoi.c)		\
 				$(addprefix $(PUSHSWAP)srcs/, sort_three.c)		\
 				$(addprefix $(PUSHSWAP)srcs/, sort_five.c)		\
 				$(addprefix $(PUSHSWAP)srcs/, sort_general.c)	\
-				$(addprefix $(PUSHSWAP)srcs/, print_list.c)
+				$(addprefix $(PUSHSWAP)srcs/, print_list.c)		\
+				$(addprefix $(PUSHSWAP)srcs/, algo.c)
 
 PUSH_OBJS 	=	$(PUSH_SRCS:.c=.o)
 

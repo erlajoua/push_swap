@@ -32,7 +32,8 @@ void	remove_top(t_list **lst)
 
 	tmp = (*lst)->next;
 	free(*lst);
-	tmp->prev = NULL;
+	if (tmp != NULL)
+		tmp->prev = NULL;
 	*lst = tmp;
 }
 

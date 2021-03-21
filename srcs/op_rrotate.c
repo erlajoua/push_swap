@@ -15,21 +15,17 @@
 void	rra(t_list **a, int option)
 {
 	t_list	*tmp;
-	t_list	*newelem;
-	t_list	*pro;
 
 	if (!*a || !(*a)->next)
 		return ;
 	tmp = *a;
 	while (tmp->next)
 		tmp = tmp->next;
-	pro = tmp;
-	pro->prev->next = NULL;
-	newelem = init_list(tmp->data);
-	free(tmp);
-	(*a)->prev = newelem;
-	newelem->next = (*a);
-	*a = newelem;
+	tmp->prev->next = NULL;
+	tmp->prev = NULL;
+	tmp->next = *a;
+	(*a)->prev = tmp;
+	*a = tmp;
 	if (option == 1)
 		printf("rra\n");
 }
@@ -37,19 +33,17 @@ void	rra(t_list **a, int option)
 void	rrb(t_list **b, int option)
 {
 	t_list	*tmp;
-	t_list	*newelem;
 
 	if (!*b || !(*b)->next)
 		return ;
 	tmp = *b;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = NULL;
-	newelem = init_list(tmp->data);
-	free(tmp);
-	(*b)->prev = newelem;
-	newelem->next = (*b);
-	*b = newelem;
+	tmp->prev->next = NULL;
+	tmp->prev = NULL;
+	tmp->next = *b;
+	(*b)->prev = tmp;
+	*b = tmp;
 	if (option == 1)
 		printf("rrb\n");
 }

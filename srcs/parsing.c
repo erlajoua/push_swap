@@ -76,11 +76,11 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 		i++;
 	}
 	print_list(a, b);
-	/*if (ac - 1 == 3)
+	if (ac - 1 == 3)
 		sort_three(a);
 	else if (ac - 1 == 5)
 		sort_five(a, b);
 	else
-		sort_general(a, b);*/
+		algo(a, b, ac - 1); //sort_general(a, b);
 	return (1);
 }
