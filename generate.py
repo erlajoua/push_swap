@@ -1,8 +1,12 @@
 from random import randrange
 i = 0
-print("./push_swap")
+tableau = []
 while i < 100:
   a = randrange(1, 300)
-  print(a," ",end='')
+  if a not in tableau:
+    tableau.append(a)
+    i+=1
+i = 0
+while i < 100:
+  print(tableau[i]," ",end='')
   i+=1
-print(" | wc")
