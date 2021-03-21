@@ -1,7 +1,7 @@
 from random import randrange
 i = 0
 tableau = []
-print("./push_swap",end='')
+print("./push_swap ",end='')
 while i < 100:
 	a = randrange(1, 300)
 	if a not in tableau:
