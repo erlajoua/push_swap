@@ -93,7 +93,7 @@ void	print_sort(int *sort, int size) // a supp
 	int i;
 
 	i = 0;
-	printf("\nSORT:\n\n");
+	//printf("\nSORT:\n\n");
 	while (i < size)
 	{
 		printf("%d  ", sort[i]);
@@ -126,8 +126,8 @@ int		get_movs(t_algo *algo)
 	middle = algo->a_len / 2;
 	first_movs = algo->first_pos;
 	if (algo->first_pos > middle)
-		first_movs = algo->a_len - algo->first_pos * -1;
-	second_movs = algo->a_len - algo->second_pos * -1;
+		first_movs = (algo->a_len - algo->first_pos) * -1;
+	second_movs = (algo->a_len - algo->second_pos) * -1;
 	if (algo->second_pos < middle)
 		second_movs = algo->second_pos;
 	if (first_movs < second_movs)
@@ -172,7 +172,7 @@ int		get_pos(t_list **b, int value)
 		i++;
 	}
 	free(tab);
-	printf("get_pos return (-1)\n");
+	//printf("get_pos return (-1)\n");
 	return (-1);
 }
 
@@ -281,7 +281,7 @@ void	swap_to_a(t_list **a, t_list **b)
 	//print_list(a, b);
 	while (*b != NULL)
 		pa(a, b, 1);
-	print_list(a, b);
+	//print_list(a, b);
 }
 
 void	algo(t_list **a, t_list **b, int size)
@@ -297,11 +297,11 @@ void	algo(t_list **a, t_list **b, int size)
 		{
 			algo.a_len = list_len(a);
 			find_hold(a, &algo);
-			printf("first = %d pos %d      second = %d pos %d\n", algo.h_first, algo.first_pos, algo.h_second, algo.second_pos);
+			//printf("first = %d pos %d      second = %d pos %d\n", algo.h_first, algo.first_pos, algo.h_second, algo.second_pos);
 			ft_rooftop(a, &algo);
-			print_list(a, b);
+			//print_list(a, b);
 			swap_to_b(a, b);
-			print_list(a, b);
+			//print_list(a, b);
 			i++;//*a = NULL;
 		}
 		swap_to_a(a, b);
