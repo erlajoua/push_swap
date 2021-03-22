@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:19:18 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 19:19:45 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/22 20:35:24 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,26 @@ void	get_chunk(t_list **a, t_algo *algo)
 	}
 }
 
+void	find_loop(t_list *tmp, t_algo *algo)
+{
+	int i;
+
+	i = algo->a_len - 1;
+	while (tmp->next)
+		tmp = tmp->next;
+	while (tmp->prev)
+	{
+		if (is_in_chunk(*algo, tmp->data))
+		{
+			algo->h_second = tmp->data;
+			algo->second_pos = i;
+			break ;
+		}
+		i--;
+		tmp = tmp->prev;
+	}
+}
+
 int		find_hold(t_list **a, t_algo *algo)
 {
 	t_list	*tmp;
@@ -68,19 +88,6 @@ int		find_hold(t_list **a, t_algo *algo)
 		i++;
 		tmp = tmp->next;
 	}
-	i = algo->a_len - 1;
-	while (tmp->next)
-		tmp = tmp->next;
-	while (tmp->prev)
-	{
-		if (is_in_chunk(*algo, tmp->data))
-		{
-			algo->h_second = tmp->data;
-			algo->second_pos = i;
-			break ;
-		}
-		i--;
-		tmp = tmp->prev;
-	}
+	find_loop(tmp, algo);
 	return (0);
 }
