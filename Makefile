@@ -6,7 +6,7 @@
 #    By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/07 18:52:30 by erlajoua          #+#    #+#              #
-#    Updated: 2021/03/22 18:55:18 by erlajoua         ###   ########.fr        #
+#    Updated: 2021/03/22 20:42:06 by erlajoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = 	srcs/ft_atoi.c \
 		srcs/op_rrotate.c \
 		srcs/sort_three.c \
 		srcs/sort_five.c \
+		srcs/sort_onetwo.c \
 		srcs/sort_general.c \
 		srcs/get_values.c \
 		srcs/print_list.c \

@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:55 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 19:16:01 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/22 20:47:35 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,12 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 			return (parsing_error());
 		i++;
 	}
-	if (ac - 1 == 3)
+	if (ac - 1 <= 2)
+		sort_onetwo(a);
+	else if (ac - 1 == 3)
 		sort_three(a);
-	else if (ac - 1 == 5)
-		sort_five(a, b);
+	else if (ac - 1 <= 5)
+		sort_five(a, b, ac);
 	else
 		algo(a, b, ac - 1);
 	return (1);

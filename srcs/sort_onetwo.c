@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_onetwo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/07 18:50:53 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 21:25:58 by erlajoua         ###   ########.fr       */
+/*   Created: 2021/03/22 20:40:08 by erlajoua          #+#    #+#             */
+/*   Updated: 2021/03/22 20:43:07 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-int		main(int ac, char **av)
+void	sort_onetwo(t_list **a)
 {
-	t_list	*a;
-	t_list	*b;
-
-	a = NULL;
-	b = NULL;
-	if (ac < 2)
+	printf("salut\n");
+	if ((*a)->next)
 	{
-		printf("usage %s [integer1] [integer2]\n", av[0]);
-		return (0);
+		if ((*a)->data > (*a)->next->data)
+			ft_swap(&(*a)->data, &(*a)->next->data);
 	}
-	parsing(ac, av, &a, &b);
-//	print_list(&a, &b);
-	lst_clear(&a);
-	lst_clear(&b);
-	return (0);
 }

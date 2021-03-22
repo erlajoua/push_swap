@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:54:58 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 18:53:12 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/22 21:07:43 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		find_index_min(int *tab, int len)
 		}
 		i++;
 	}
-	return (min[0]);
+	return (min[1]);
 }
 
 void	sort_general(t_list **a, t_list **b)

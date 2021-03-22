@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 19:14:27 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/22 21:27:19 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,24 @@
 int		accept(t_list **a, int ref)
 {
 	t_list	*tmp;
+	int		*tab;
 	int		accept;
+	int		len;
 
 	tmp = *a;
-	accept = -2147483648;
+	tab = list_to_tab(a);
+	len = list_len(a);
+	accept = find_index_min(tab, len);
 	while (tmp)
 	{
 		if ((tmp->data > accept) && (tmp->data > ref))
+		{
+			free(tab);
 			return (tmp->data);
+		}
 		tmp = tmp->next;
 	}
+	free(tab);
 	return (accept);
 }
 
@@ -45,39 +53,40 @@ void	end_sort_five(t_list **a)
 	free(tab);
 }
 
-void	five_loop(t_list *top, t_list **a, t_list **b)
+void	five_loop(t_list **a, t_list **b, int j)
 {
-	int		j;
 	int		ref;
+	t_list	*top;
 	t_list	*new;
 
-	j = 2;
+	top = *b;
 	while ((top) || j)
 	{
 		new = *a;
 		ref = accept(a, top->data);
 		if (new->data == ref)
 		{
-			pa(a, b, 0);
+			pa(a, b, 1);
 			j--;
 			top = top->next;
 		}
 		else
-			ra(a, 0);
+			ra(a, 1);
 	}
 }
 
-void	sort_five(t_list **a, t_list **b)
+void	sort_five(t_list **a, t_list **b, int ac)
 {
-	t_list	*top;
-
 	pb(a, b, 0);
-	pb(a, b, 0);
+	if (ac - 1 == 5)
+		pb(a, b, 0);
 	sort_three(a);
 	print_list(a, b);
-	if ((*b)->data < (*b)->next->data)
+	if (ac - 1 == 5 && ((*b)->data < (*b)->next->data))
 		ft_swap(&((*b)->data), &((*b)->next->data));
-	top = *b;
-	five_loop(top, a, b);
+	if (ac - 1 == 5)
+		five_loop(a, b, 2);
+	else
+		five_loop(a, b, 1);
 	end_sort_five(a);
 }

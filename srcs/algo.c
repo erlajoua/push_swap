@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:19:13 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 19:19:14 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/22 20:43:58 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,4 @@ void	algo(t_list **a, t_list **b, int size)
 		}
 		swap_to_a(a, b);
 	}
-	//print_list(a, b);
 }
