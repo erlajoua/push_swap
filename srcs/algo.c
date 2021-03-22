@@ -288,12 +288,11 @@ void	algo(t_list **a, t_list **b, int size)
 {
 	t_algo	algo;
 
-	printf("\n\n");
 	int i = 0;
 	init_algo(&algo, a, size);
 	if (size > 5)
 	{
-		while (i < 10)//(*a != NULL)
+		while (*a != NULL)
 		{
 			algo.a_len = list_len(a);
 			find_hold(a, &algo);
