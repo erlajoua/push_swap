@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 18:52:53 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/22 19:14:27 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,30 @@ int		accept(t_list **a, int ref)
 	return (accept);
 }
 
-void	sort_five(t_list **a, t_list **b)
+void	end_sort_five(t_list **a)
 {
-	int		ref;
+	int *tab;
+	int len;
+	int index_min;
+
+	tab = list_to_tab(a);
+	len = list_len(a);
+	index_min = find_index_min(tab, len);
+	while (index_min != 0)
+	{
+		ra(a, 0);
+		index_min--;
+	}
+	free(tab);
+}
+
+void	five_loop(t_list *top, t_list **a, t_list **b)
+{
 	int		j;
-	t_list	*top;
+	int		ref;
 	t_list	*new;
 
 	j = 2;
-	pb(a, b, 0);
-	pb(a, b, 0);
-	sort_three(a);
-	print_list(a, b);
-	if ((*b)->data < (*b)->next->data)
-		ft_swap(&((*b)->data), &((*b)->next->data));
-	top = *b;
-	print_list(a, b);
 	while ((top) || j)
 	{
 		new = *a;
@@ -57,13 +65,19 @@ void	sort_five(t_list **a, t_list **b)
 		else
 			ra(a, 0);
 	}
-	int *tab = list_to_tab(a);
-	int len = list_len(a);
-	int index_min = find_index_min(tab, len);
-	while (index_min != 0)
-	{
-		ra(a, 0);
-		index_min--;
-	}
-	free(tab);
+}
+
+void	sort_five(t_list **a, t_list **b)
+{
+	t_list	*top;
+
+	pb(a, b, 0);
+	pb(a, b, 0);
+	sort_three(a);
+	print_list(a, b);
+	if ((*b)->data < (*b)->next->data)
+		ft_swap(&((*b)->data), &((*b)->next->data));
+	top = *b;
+	five_loop(top, a, b);
+	end_sort_five(a);
 }

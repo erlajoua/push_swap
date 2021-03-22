@@ -6,7 +6,7 @@
 #    By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/07 18:52:30 by erlajoua          #+#    #+#              #
-#    Updated: 2021/03/22 17:44:53 by erlajoua         ###   ########.fr        #
+#    Updated: 2021/03/22 18:55:18 by erlajoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,12 @@ SRCS = 	srcs/ft_atoi.c \
 		srcs/sort_three.c \
 		srcs/sort_five.c \
 		srcs/sort_general.c \
+		srcs/get_values.c \
 		srcs/print_list.c \
+		srcs/chunk.c \
+		srcs/ft_rooftop.c \
+		srcs/swap_to.c \
+		srcs/get_pos.c \
 		srcs/algo.c
 
 INCL =	headers/push_swap.h
