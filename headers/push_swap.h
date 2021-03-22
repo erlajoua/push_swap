@@ -24,6 +24,13 @@ struct					s_algo
 	int first_pos;
 	int second_pos;
 	int a_len;
+	int b_len;
+	int	ra;
+	int rb;
+	int rra;
+	int rrb;
+	int rr;
+	int rrr;
 };
 typedef struct s_algo	t_algo;
 

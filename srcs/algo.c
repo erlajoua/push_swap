@@ -42,14 +42,18 @@ void	get_chunk(t_list **a, t_algo *algo)
 
 	tmp = *a;
 	t = 0;
-	while (tmp->next)
+	while (tmp)
 	{
 		if (is_in_chunk(*algo, tmp->data))
+		{
 			t = 1;
+		}
 		tmp = tmp->next;
 	}
 	if (!t)
+	{
 		algo->current++;
+	}
 }
 
 int		find_hold(t_list **a, t_algo *algo)
@@ -60,7 +64,7 @@ int		find_hold(t_list **a, t_algo *algo)
 	tmp = *a;
 	i = 0;
 	get_chunk(a, algo);
-	while (tmp->next)
+	while (tmp)
 	{
 		if (is_in_chunk(*algo, tmp->data))
 		{
@@ -71,7 +75,7 @@ int		find_hold(t_list **a, t_algo *algo)
 		i++;
 		tmp = tmp->next;
 	}
-	i = algo->a_len;
+	i = algo->a_len - 1;
 	while (tmp->next)
 		tmp = tmp->next;
 	while (tmp->prev)
@@ -88,12 +92,11 @@ int		find_hold(t_list **a, t_algo *algo)
 	return (0);
 }
 
-void	print_sort(int *sort, int size) // a supp
+void	print_sort(int *sort, int size)
 {
 	int i;
 
 	i = 0;
-	//printf("\nSORT:\n\n");
 	while (i < size)
 	{
 		printf("%d  ", sort[i]);
@@ -106,15 +109,10 @@ void	init_algo(t_algo *algo, t_list **a, int size)
 {
 	algo->chunk_size = size;
 	algo->sort = sort_list(a, size);
-	//print_sort(algo->sort, size); // a enlever
-	if (algo->chunk_size / 2 > 20)
-		while (algo->chunk_size / 2 > 20)
-			algo->chunk_size /= 2;
-	else
-		algo->chunk_size /= 2;
-	algo->chunk_nb = size / algo->chunk_size;
+	int	save = algo->chunk_size / 5;
+	algo->chunk_size = save;
+	algo->chunk_nb = size / save;
 	algo->current = 1;
-	//printf("chunk_size = %d\n", algo->chunk_size); // a enlever
 }
 
 int		get_movs(t_algo *algo)
@@ -127,7 +125,7 @@ int		get_movs(t_algo *algo)
 	first_movs = algo->first_pos;
 	if (algo->first_pos > middle)
 		first_movs = (algo->a_len - algo->first_pos) * -1;
-	second_movs = (algo->a_len - algo->second_pos) * -1;
+	second_movs = algo->a_len - algo->second_pos * -1;
 	if (algo->second_pos < middle)
 		second_movs = algo->second_pos;
 	if (first_movs < second_movs)
@@ -162,17 +160,13 @@ int		get_pos(t_list **b, int value)
 	while (i < size - 1)
 	{
 		if (i == 0)
-		//{
 			if (value < tab[size - 1] && value > tab[i])
 				return (i);
-			//if (value < tab[i] && value > tab[i + 1])
-		//}
 		if (value < tab[i] && value > tab[i + 1])
 			return (i + 1);
 		i++;
 	}
 	free(tab);
-	//printf("get_pos return (-1)\n");
 	return (-1);
 }
 
@@ -230,24 +224,14 @@ void	swap_to_b(t_list **a, t_list **b)
 	int b_len;
 	int	movs;
 
-	if (*b && (*b)->next != NULL)//if (!is_smaller(b, (*a)->data) && (*a)->next != NULL)
+	if (*b && (*b)->next != NULL)
 	{
-		if ((pos = get_pos(b, (*a)->data)) == -1)//get_smaller_pos(b);
-		{
-			if (is_smaller(b, (*a)->data) || is_bigger(b, (*a)->data))
-				pos = get_bigger_pos(b);
-			//else
-				//pos = get_smaller_pos(b);
-		}
-		//printf("sp = %d\n", pos);
+		if ((pos = get_pos(b, (*a)->data)) == -1)
+			pos = get_bigger_pos(b);
 		b_len = list_len(b);
 		movs = pos;
 		if (pos > b_len / 2)
-		{
-			//printf("passage\n");
 			movs = b_len - pos; // +1 ?
-		}
-		//printf("movs = %d\n", movs);
 		while (movs-- > 0)
 		{
 			if (pos <= b_len / 2)
@@ -284,6 +268,88 @@ void	swap_to_a(t_list **a, t_list **b)
 	//print_list(a, b);
 }
 
+int		min(int a, int b)
+{
+	if (a <= b)
+		return (a);
+	else
+		return (b);
+}
+
+void	get_values(t_list **b, t_algo *algo)
+{
+	int len;
+	int movs;
+	int pos;
+	int common;
+
+	movs = get_movs(algo);
+ 	len = algo->a_len;
+	if (movs >= 0) //ra
+	{
+		pos = get_pos(b, algo->h_first);
+		if (pos == -1)
+			pos = get_bigger_pos(b);
+		if (pos > algo->b_len / 2)
+			pos = pos - algo->b_len;
+		if (pos > 0) //movs > 0
+		{
+			common = min(movs, pos);
+			algo->rr = common;
+			if (pos == common)
+				algo->ra = movs - common;
+			else
+				algo->rb = pos - common;
+		}
+		else
+		{
+			algo->ra = movs;
+			algo->rrb = -pos;
+		}
+	}
+	else if (movs < 0) //rra
+	{
+		movs = -movs;
+		pos = get_pos(b, algo->h_second);
+		if (pos == -1)
+			pos = get_bigger_pos(b);
+		if (pos > algo->b_len / 2)
+			pos = pos - algo->b_len;
+		if (pos < 0) //rrb
+		{
+			pos = -pos;
+			common = min(movs, pos);
+			algo->rrr = common;
+			if (pos == common)
+				algo->rra = movs - common;
+			else
+				algo->rrb = pos - common;	
+		}
+		else //mov negatif et pos positif
+		{
+			algo->rb = pos;	
+			algo->rra = movs;
+		}
+	}
+}
+
+void	apply_rotates(t_list **a, t_list **b, t_algo *algo)
+{
+	while (algo->rr-- > 0)
+		rr(a, b, 1);
+	while (algo->ra-- > 0)
+		ra(a, 1);
+	while (algo->rb-- > 0)
+		rb(b, 1);
+	while (algo->rr-- > 0)
+		rrr(a, b, 1);
+	while (algo->rra-- > 0)
+		rra(a, 1);
+	while (algo->rrb-- > 0)
+		rrb(b, 1);
+	pb(a, b, 1);
+}
+
 void	algo(t_list **a, t_list **b, int size)
 {
 	t_algo	algo;
@@ -294,15 +360,31 @@ void	algo(t_list **a, t_list **b, int size)
 	{
 		while (*a != NULL)
 		{
+			algo.ra = 0;
+			algo.rb = 0;
+			algo.rra = 0;
+			algo.rrb = 0;
+			algo.rr = 0;
+			algo.rrr = 0;
 			algo.a_len = list_len(a);
+			algo.b_len = list_len(b);
 			find_hold(a, &algo);
 			//printf("first = %d pos %d      second = %d pos %d\n", algo.h_first, algo.first_pos, algo.h_second, algo.second_pos);
-			ft_rooftop(a, &algo);
-			//print_list(a, b);
-			swap_to_b(a, b);
-			//print_list(a, b);
+			if ((*b) && (*b)->next)
+			{
+				get_values(b, &algo);
+				apply_rotates(a, b, &algo);
+			}
+			else
+			{
+				//printf("je vais rooftop ! \n");
+				ft_rooftop(a, &algo);
+				apply_rotates(a, b, &algo);
+			}
+			//printf("================\n");
 			i++;//*a = NULL;
 		}
 		swap_to_a(a, b);
 	}
+	//print_list(a, b);
 }

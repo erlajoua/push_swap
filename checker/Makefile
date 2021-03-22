@@ -6,7 +6,7 @@
 #    By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/07 18:52:30 by erlajoua          #+#    #+#              #
-#    Updated: 2021/03/19 09:47:54 by erlajoua         ###   ########.fr        #
+#    Updated: 2021/03/22 17:45:00 by erlajoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS 		= 	srcs/main.c					\
 				srcs/parsing.c				\
 				srcs/get_next_line.c		\
 				srcs/get_next_line_utils.c	\
-				srcs/utils.c						\
+				srcs/utils.c						
 
 INCL 		=	headers/checker.h
 
@@ -45,7 +45,7 @@ PUSH_SRCS	=	$(addprefix $(PUSHSWAP)srcs/, ft_atoi.c)		\
 PUSH_OBJS 	=	$(PUSH_SRCS:.c=.o)
 
 CC 			= 	clang
-FLAGS 		= 	-Wall -Wextra
+FLAGS 		= 	-Wall -Wextra #-fsanitize=address
 
 %.o:		%.c
 			$(CC) $(FLAGS) -c $< -o $@
