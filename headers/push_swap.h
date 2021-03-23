@@ -5,6 +5,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+enum
+{
+	HIDE,
+	SHOW
+};
+
 struct					s_list
 {
 	int			data;
@@ -31,6 +37,8 @@ struct					s_algo
 	int rrb;
 	int rr;
 	int rrr;
+	int	ret;
+	int display;
 };
 typedef struct s_algo	t_algo;
 
@@ -50,6 +58,9 @@ int			get_bigger_pos(t_list **lst);
 int			get_movs(t_algo *algo);
 int			is_in_chunk(t_algo algo, int value);
 int			find_hold(t_list **a, t_algo *algo);
+int			check_all(t_list **a, t_list **b, int size);
+int			algo(t_list **a, t_list **b, int size, int chunksize, int display);
+int			swap_to_a(t_list **a, t_list **b, t_algo *algo);
 void		push_back(t_list **lst, int data);
 void		push_front(t_list **lst, int data);
 void		print_list(t_list **a, t_list **b);
@@ -74,10 +85,7 @@ void		fill_tab(t_list **a, int *tab, int index);
 void		ft_swap(int *a, int *b);
 void		ft_putstr_fd(char *str, int fd);
 void		get_values(t_list **b, t_algo *algo);
-void		algo(t_list **a, t_list **b, int size);
 void		get_chunk(t_list **a, t_algo *algo);
-void		swap_to_a(t_list **a, t_list **b);
-void		swap_to_b(t_list **a, t_list **b);
 void		ft_rooftop(t_list **a, t_algo *algo);
 char		**ft_split(char const *s, char c);
 t_list		*init_list(int data);

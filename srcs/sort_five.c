@@ -6,11 +6,31 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 21:27:19 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/23 17:28:48 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
+
+int		find_index_min(int *tab, int len)
+{
+	int i;
+	int min[2];
+
+	min[0] = 0;
+	min[1] = tab[0];
+	i = 0;
+	while (i < len)
+	{
+		if (tab[i] < min[1])
+		{
+			min[0] = i;
+			min[1] = tab[i];
+		}
+		i++;
+	}
+	return (min[1]);
+}
 
 int		accept(t_list **a, int ref)
 {

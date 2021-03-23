@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:19:59 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 19:20:00 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/23 17:19:57 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,17 @@ void	ft_rooftop(t_list **a, t_algo *algo)
 	int top_movs;
 
 	top_movs = get_movs(algo);
+
 	if (top_movs < 0)
+	{
+		algo->ret += -top_movs;
 		while (top_movs++ < 0)
-			rra(a, 1);
+			rra(a, algo->display);
+	}
 	else
+	{
+		algo->ret += top_movs;
 		while (top_movs-- > 0)
-			ra(a, 1);
+			ra(a, algo->display);
+	}
 }
