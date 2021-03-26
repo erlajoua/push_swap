@@ -26,7 +26,7 @@ int		check_all(t_list **a, t_list **b, int size)
 
 	i = 3;
 	save = 0;
-	while (i <= size / 2)
+	while (i <= 35)
 	{
 		a_cp = lstcpy(a);
 		b_cp = lstcpy(b);
