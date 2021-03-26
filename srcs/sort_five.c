@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/23 17:28:48 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/03/26 13:53:14 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	sort_five(t_list **a, t_list **b, int ac)
 	if (ac - 1 == 5)
 		pb(a, b, 0);
 	sort_three(a);
-	print_list(a, b);
 	if (ac - 1 == 5 && ((*b)->data < (*b)->next->data))
 		ft_swap(&((*b)->data), &((*b)->next->data));
 	if (ac - 1 == 5)
