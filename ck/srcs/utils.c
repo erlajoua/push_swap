@@ -9,3 +9,33 @@ int		ft_strcmp(const char *s1, const char *s2)
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+
+int		ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+long	long_atoi(char *str)
+{
+	int		i;
+	long	ret;
+	int		sign;
+
+	i = 0;
+	ret = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	while (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		ret = ret * 10 + str[i] - '0';
+		i++;
+	}
+	return (ret * sign);
+}

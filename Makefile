@@ -14,7 +14,7 @@ PS_NAME				=	push_swap
 CK_NAME				=	checker
 PS_SRCS_DIR			=	./ps/srcs/
 CK_SRCS_DIR			=	./ck/srcs/
-PS_SRCS				= 	main.c			\
+PS_SRCS				=	main.c			\
 						ft_atoi.c		\
 						ft_list.c		\
 						ft_list2.c		\
@@ -45,15 +45,15 @@ CK_SRCS				=	main.c					\
 						utils.c
 PS_SRCS_BASENAME	=	$(addprefix $(PS_SRCS_DIR), $(PS_SRCS))
 CK_SRCS_BASENAME	=	$(addprefix $(CK_SRCS_DIR), $(CK_SRCS))		\
-						$(addprefix $(PS_SRCS_DIR), parsing.c)		\
 						$(addprefix $(PS_SRCS_DIR), op_push.c)		\
 						$(addprefix $(PS_SRCS_DIR), op_rotate.c)	\
 						$(addprefix $(PS_SRCS_DIR), op_rrotate.c)	\
-						$(addprefix $(PS_SRCS_DIR), op_swap.c)	
+						$(addprefix $(PS_SRCS_DIR), op_swap.c)		\
+						$(addprefix $(PS_SRCS_DIR), ft_list.c)
 PS_OBJS				=	$(PS_SRCS_BASENAME:.c=.o)
 CK_OBJS				=	$(CK_SRCS_BASENAME:.c=.o)
 CC					=	gcc
-FLAGS				=	-Wall -Werror -Wextra #-fsanitize=address
+FLAGS				=	-Wall -Werror -Wextra
 
 .c.o		:
 			$(CC) -c $< -o $(<:.c=.o) $(FLAGS)
@@ -67,7 +67,7 @@ $(PS_NAME)	:	$(PS_OBJS)
 $(CK_NAME)	:	$(CK_OBJS)
 			$(CC) $(CK_OBJS) $(FLAGS) -o $(CK_NAME)
 
-checker		:	$(CK_NAME)
+ck			:	$(CK_NAME)
 
 clean		:
 			rm -rf $(PS_OBJS)

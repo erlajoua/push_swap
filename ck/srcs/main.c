@@ -1,7 +1,7 @@
 #include "../headers/checker.h"
 #include "../headers/get_next_line.h"
 
-void    put_instructions(t_list **a, t_list **b)
+void    get_operations(t_list **a, t_list **b)
 {
 	char *line;
 
@@ -36,11 +36,10 @@ void    put_instructions(t_list **a, t_list **b)
 			}
 		free(line);
 	}
-	free(line);
 }
 
 
-int     is_sort(t_list **a)
+int		is_sort(t_list **a)
 {
 	t_list *tmp;
 	
@@ -61,15 +60,15 @@ int     main(int ac, char **av)
 
 	b = NULL;
 	get_list_a(&a, ac, av);
-	print_list(&a, &b);
-	printf("\n\n");
-	put_instructions(&a, &b);
-	printf("\n\n");
+	//print_list(&a, &b);//
+	//printf("\n\n");//
+	get_operations(&a, &b);
+	//printf("\n\n");//
 	if (is_sort(&a) && !b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	printf("\n\n");
-	print_list(&a, &b);
+	//printf("\n\n");//
+	//print_list(&a, &b);//
 	return (0);
 }

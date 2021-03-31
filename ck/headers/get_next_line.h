@@ -3,37 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vintran <vintran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 13:55:50 by erlajoua          #+#    #+#             */
-/*   Updated: 2020/11/25 13:58:44 by erlajoua         ###   ########.fr       */
+/*   Created: 2021/03/26 15:04:25 by vintran           #+#    #+#             */
+/*   Updated: 2021/03/26 16:01:13 by vintran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
+# endif
+
 # include <unistd.h>
+# include <stdlib.h>
 # include <stdio.h>
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
-# define BUFFER_SIZE 4096
 
-struct					s_gnl
-{
-	char	*rest;
-	int		nb_bytes;
-};
-typedef struct s_gnl	t_gnl;
-
-int						get_next_line(int fd, char **line);
-int						ft_strlen(char *str);
-char					*ft_strcpy(char *dest, char *src);
-char					*ft_strjoin(char const *s1, char const *s2);
-void					ft_bzero(void *s, size_t n);
-char					*ft_getrest(char *str, int *empty_rest);
-char					*ft_getline(char *str);
+int		get_next_line(int fd, char **line);
+int		ft_strlen(char *str);
+char	*ft_strndup(char *src, int n);
+int		is_newline(char *s);
 
 #endif
