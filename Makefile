@@ -10,56 +10,73 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+PS_NAME				=	push_swap
+CK_NAME				=	checker
+PS_SRCS_DIR			=	./ps/srcs/
+CK_SRCS_DIR			=	./ck/srcs/
+PS_SRCS				= 	main.c			\
+						ft_atoi.c		\
+						ft_list.c		\
+						ft_list2.c		\
+						display.c		\
+						parsing.c		\
+						is_char.c		\
+						ft_split.c		\
+						manage_tab.c	\
+						op_push.c		\
+						op_swap.c		\
+						op_rotate.c		\
+						op_rrotate.c	\
+						sort_three.c	\
+						sort_five.c		\
+						sort_onetwo.c	\
+						get_values.c	\
+						print_list.c	\
+						chunk.c			\
+						ft_rooftop.c	\
+						swap_to.c		\
+						get_pos.c		\
+						algo.c			\
+						backtrack.c
+CK_SRCS				=	main.c					\
+						parsing.c				\
+						get_next_line.c			\
+						get_next_line_utils.c	\
+						utils.c
+PS_SRCS_BASENAME	=	$(addprefix $(PS_SRCS_DIR), $(PS_SRCS))
+CK_SRCS_BASENAME	=	$(addprefix $(CK_SRCS_DIR), $(CK_SRCS))		\
+						$(addprefix $(PS_SRCS_DIR), parsing.c)		\
+						$(addprefix $(PS_SRCS_DIR), op_push.c)		\
+						$(addprefix $(PS_SRCS_DIR), op_rotate.c)	\
+						$(addprefix $(PS_SRCS_DIR), op_rrotate.c)	\
+						$(addprefix $(PS_SRCS_DIR), op_swap.c)	
+PS_OBJS				=	$(PS_SRCS_BASENAME:.c=.o)
+CK_OBJS				=	$(CK_SRCS_BASENAME:.c=.o)
+CC					=	gcc
+FLAGS				=	-Wall -Werror -Wextra #-fsanitize=address
 
-SRCS = 	srcs/ft_atoi.c \
-		srcs/ft_list.c \
-		srcs/ft_list2.c \
-		srcs/main.c \
-		srcs/display.c \
-		srcs/parsing.c \
-		srcs/is_char.c \
-		srcs/ft_split.c \
-		srcs/manage_tab.c \
-		srcs/op_push.c \
-		srcs/op_swap.c \
-		srcs/op_rotate.c \
-		srcs/op_rrotate.c \
-		srcs/sort_three.c \
-		srcs/sort_five.c \
-		srcs/sort_onetwo.c \
-		srcs/get_values.c \
-		srcs/print_list.c \
-		srcs/chunk.c \
-		srcs/ft_rooftop.c \
-		srcs/swap_to.c \
-		srcs/get_pos.c \
-		srcs/algo.c \
-		srcs/backtrack.c
+.c.o		:
+			$(CC) -c $< -o $(<:.c=.o) $(FLAGS)
 
-INCL =	headers/push_swap.h
+all			:	$(PS_NAME)
 
-OBJS = $(SRCS:.c=.o)
+$(PS_NAME)	:	$(PS_OBJS)
+			$(CC) $(PS_OBJS) $(FLAGS) -o $(PS_NAME)
+			@echo [$(PS_NAME)] : Created !
 
-CC = clang
+$(CK_NAME)	:	$(CK_OBJS)
+			$(CC) $(CK_OBJS) $(FLAGS) -o $(CK_NAME)
 
-FLAGS = -Wall -Wextra #-fsanitize=address
+checker		:	$(CK_NAME)
 
-%.o:		%.c
-			$(CC) $(FLAGS) -c $< -o $@
+clean		:
+			rm -rf $(PS_OBJS)
+			rm -rf $(CK_OBJS)
 
-all: $(NAME)
+fclean		:	clean
+			rm -f $(PS_NAME)
+			rm -f $(CK_NAME)
 
-$(NAME):	$(OBJS) $(INCL)
-			$(CC) $(FLAGS) $(OBJS) -o $@
-
-clean :
-			rm -rf $(OBJS)
-
-fclean : 	clean
-			rm -rf $(NAME)
-
-re:			fclean all
+re			:	fclean all
 
 .PHONY: 		clean fclean all re
-
