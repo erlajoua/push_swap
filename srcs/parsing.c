@@ -12,6 +12,20 @@
 
 #include "../headers/push_swap.h"
 
+int   is_sorted(t_list **a)
+{
+  t_list  *tmp;
+
+  tmp = *a;
+  while (tmp->next)
+  {
+    if (tmp->data <= tmp->next->data)
+      return (0);
+    tmp = tmp->next;
+  }
+  return (1);
+}
+
 int		check_str(char *str)
 {
 	int i;
@@ -75,6 +89,8 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 			return (parsing_error());
 		i++;
 	}
+  if (is_sorted(a))
+    return (1);
 	if (ac - 1 <= 2)
 		sort_onetwo(a);
 	else if (ac - 1 == 3)
