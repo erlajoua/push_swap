@@ -19,7 +19,7 @@ int   is_sorted(t_list **a)
   tmp = *a;
   while (tmp->next)
   {
-    if (tmp->data <= tmp->next->data)
+    if (tmp->data > tmp->next->data)
       return (0);
     tmp = tmp->next;
   }
