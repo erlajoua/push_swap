@@ -38,9 +38,16 @@ PUSH_SRCS	=	$(addprefix $(PUSHSWAP)srcs/, ft_atoi.c)		\
 				$(addprefix $(PUSHSWAP)srcs/, op_rrotate.c)		\
 				$(addprefix $(PUSHSWAP)srcs/, sort_three.c)		\
 				$(addprefix $(PUSHSWAP)srcs/, sort_five.c)		\
+				$(addprefix $(PUSHSWAP)srcs/, sort_onetwo.c)	\
 				$(addprefix $(PUSHSWAP)srcs/, sort_general.c)	\
+				$(addprefix $(PUSHSWAP)srcs/, get_values.c)		\
+				$(addprefix $(PUSHSWAP)srcs/, chunk.c)			\
+				$(addprefix $(PUSHSWAP)srcs/, ft_rooftop.c)		\
+				$(addprefix $(PUSHSWAP)srcs/, swap_to.c)		\
+				$(addprefix $(PUSHSWAP)srcs/, get_pos.c)		\
 				$(addprefix $(PUSHSWAP)srcs/, print_list.c)		\
-				$(addprefix $(PUSHSWAP)srcs/, algo.c)
+				$(addprefix $(PUSHSWAP)srcs/, algo.c)			\
+				$(addprefix $(PUSHSWAP)srcs/, backtrack.c)
 
 PUSH_OBJS 	=	$(PUSH_SRCS:.c=.o)
 

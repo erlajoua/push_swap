@@ -42,6 +42,7 @@ INCL =	headers/push_swap.h
 OBJS = $(SRCS:.c=.o)
 
 CC = clang
+
 FLAGS = -Wall -Wextra #-fsanitize=address
 
 %.o:		%.c
