@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/26 13:53:14 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:14:37 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,11 @@ void	five_loop(t_list **a, t_list **b, int j)
 
 void	sort_five(t_list **a, t_list **b, int ac)
 {
-	pb(a, b, 0);
+	(void)a;
+	(void)b;
+	(void)ac;
+	printf("à refaire car je suis nul a chier\n");
+	/*	pb(a, b, 0);
 	if (ac - 1 == 5)
 		pb(a, b, 0);
 	sort_three(a);
@@ -107,5 +111,5 @@ void	sort_five(t_list **a, t_list **b, int ac)
 		five_loop(a, b, 2);
 	else
 		five_loop(a, b, 1);
-	end_sort_five(a);
+	end_sort_five(a);*/
 }

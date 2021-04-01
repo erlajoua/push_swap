@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:18:44 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 19:18:45 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:16:07 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@ int		get_pos(t_list **b, int value)
 	{
 		if (i == 0)
 			if (value < tab[size - 1] && value > tab[i])
+			{
+				free(tab);
 				return (i);
+			}
 		if (value < tab[i] && value > tab[i + 1])
+		{
+			free(tab);
 			return (i + 1);
+		}
 		i++;
 	}
 	free(tab);

@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:23:24 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 12:58:12 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:17:09 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int						get_movs(t_algo *algo);
 int						is_in_chunk(t_algo algo, int value);
 int						find_hold(t_list **a, t_algo *algo);
 int						check_all(t_list **a, t_list **b, int size);
-int						algo(t_list **a, t_list **b, t_size *mysize, int display);
+int						algo(t_list **a, t_list **b,
+						t_size *mysize, int display);
 int						swap_to_a(t_list **a, t_list **b, t_algo *algo);
 void					push_back(t_list **lst, int data);
 void					push_front(t_list **lst, int data);

@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 11:54:25 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 11:58:05 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:08:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		exec_ope(char *line, t_list **a, t_list **b)
 	return (1);
 }
 
-void	get_operations(t_list **a, t_list **b)
+int		get_operations(t_list **a, t_list **b)
 {
 	char *line;
 
@@ -51,10 +51,12 @@ void	get_operations(t_list **a, t_list **b)
 		if (!(exec_ope(line, a, b)))
 		{
 			write(1, "Error\n", 6);
-			exit(0);
+			free(line);
+			return (0);
 		}
 		free(line);
 	}
+	return (1);
 }
 
 int		is_sort(t_list **a)
@@ -80,11 +82,15 @@ int		main(int ac, char **av)
 	a = NULL;
 	if (ac <= 1)
 		return (0);
-	get_list_a(&a, ac, av);
-	get_operations(&a, &b);
+	if (!(get_list_a(&a, ac, av)))
+		return (0);
+	if (!(get_operations(&a, &b)))
+		return (0);
 	if (is_sort(&a) && !b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	lst_clear(&a);
+	lst_clear(&b);
 	return (0);
 }

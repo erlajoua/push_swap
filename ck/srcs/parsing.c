@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 11:58:33 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 12:01:58 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:07:22 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		check_duplicate(t_list **a, int data)
 	return (1);
 }
 
-void	get_list_a(t_list **a, int ac, char **av)
+int		get_list_a(t_list **a, int ac, char **av)
 {
 	int		i;
 	int		data;
@@ -56,8 +56,10 @@ void	get_list_a(t_list **a, int ac, char **av)
 		else
 		{
 			write(1, "Error\n", 6);
-			exit(0);
+			lst_clear(a);
+			return (0);
 		}
 		i++;
 	}
+	return (1);
 }
