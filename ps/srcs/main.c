@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:53 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 21:25:58 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:49:28 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	parsing(ac, av, &a, &b);
-//	print_list(&a, &b);
 	lst_clear(&a);
 	lst_clear(&b);
 	return (0);

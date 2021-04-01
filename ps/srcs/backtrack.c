@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   backtrack.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/01 12:50:56 by erlajoua          #+#    #+#             */
+/*   Updated: 2021/04/01 12:59:17 by erlajoua         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/push_swap.h"
 
 t_list	*lstcpy(t_list **lst)
@@ -15,39 +27,34 @@ t_list	*lstcpy(t_list **lst)
 	return (cp);
 }
 
+void	init_check(t_check *ch)
+{
+	ch->a_cp = NULL;
+	ch->b_cp = NULL;
+	ch->i = 3;
+	ch->save = 0;
+}
+
 int		check_all(t_list **a, t_list **b, int size)
 {
-	int i;
-	int ret;
-	int prev;
-	int save;
-	t_list *a_cp = NULL;
-	t_list *b_cp = NULL;
+	t_check ch;
 
-	i = 3;
-	save = 0;
-	while (i <= 35)
+	init_check(&ch);
+	while (ch.i <= 35)
 	{
-		a_cp = lstcpy(a);
-		b_cp = lstcpy(b);
-		//print_list(&a_cp, &b_cp);
-		//printf("HIDE : %d\n", HIDE);
-		ret = algo(&a_cp, &b_cp, size, i, HIDE);
-		//printf("ret = %d   pour chunksize = %d\n", ret, i);
-		if (i == 3)
+		ch.a_cp = lstcpy(a);
+		ch.b_cp = lstcpy(b);
+		ch.mysize.size = size;
+		ch.mysize.chunksize = ch.i;
+		ch.ret = algo(&(ch.a_cp), &(ch.b_cp), &(ch.mysize), HIDE);
+		if ((ch.i == 3) || (ch.ret < ch.prev))
 		{
-			prev = ret;
-			save = i;
+			ch.prev = ch.ret;
+			ch.save = ch.i;
 		}
-		else if (ret < prev)
-		{
-			prev = ret;
-			save = i;
-		}
-		lst_clear(&a_cp);
-		lst_clear(&b_cp);
-		i++;
+		lst_clear(&(ch.a_cp));
+		lst_clear(&(ch.b_cp));
+		ch.i++;
 	}
-	return (save);
-	//printf("best chunksize = %d\n", save);
+	return (ch.save);
 }

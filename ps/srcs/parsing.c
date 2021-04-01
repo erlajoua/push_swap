@@ -6,24 +6,24 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:55 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/26 13:53:26 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:50:18 by erlajoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-int   is_sorted(t_list **a)
+int		is_sorted(t_list **a)
 {
-  t_list  *tmp;
+	t_list	*tmp;
 
-  tmp = *a;
-  while (tmp->next)
-  {
-    if (tmp->data > tmp->next->data)
-      return (0);
-    tmp = tmp->next;
-  }
-  return (1);
+	tmp = *a;
+	while (tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
 int		check_str(char *str)
@@ -79,6 +79,7 @@ int		parsing_error(void)
 int		parsing(int ac, char **av, t_list **a, t_list **b)
 {
 	int		i;
+	t_size	mysize;
 
 	i = 1;
 	while (i < ac)
@@ -87,8 +88,10 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 			return (parsing_error());
 		i++;
 	}
-  if (is_sorted(a))
-    return (1);
+	mysize.size = ac - 1;
+	mysize.chunksize = check_all(a, b, ac - 1);
+	if (is_sorted(a))
+		return (1);
 	if (ac - 1 <= 2)
 		sort_onetwo(a);
 	else if (ac - 1 == 3)
@@ -96,6 +99,6 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 	else if (ac - 1 <= 5)
 		sort_five(a, b, ac);
 	else
-		algo(a, b, ac - 1, check_all(a, b, ac - 1), SHOW);
+		algo(a, b, &mysize, SHOW);
 	return (1);
 }
