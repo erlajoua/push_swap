@@ -14,12 +14,10 @@
 
 int		get_pos(t_list **b, int value)
 {
-	t_list	*tmp;
 	int		size;
 	int		*tab;
 	int		i;
 
-	tmp = *b;
 	size = list_len(b);
 	tab = list_to_tab(b);
 	i = 0;

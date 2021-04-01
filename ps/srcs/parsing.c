@@ -79,9 +79,7 @@ int		parsing_error(void)
 int		parsing(int ac, char **av, t_list **a, t_list **b)
 {
 	int		i;
-	int		j;
 
-	j = 0;
 	i = 1;
 	while (i < ac)
 	{
