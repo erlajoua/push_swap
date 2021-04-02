@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/02 14:09:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/02 15:16:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,26 @@ void	sort_five(t_list **a, t_list **b, int ac)
 {
 	int pos;
 
-	pb(a, b, 0);
+	pb(a, b, SHOW);
 	if (ac - 1 == 5)
-		pb(a, b, 0);
+		pb(a, b, SHOW);
 	sort_three(a);
 	while ((*b) != NULL)
 	{
 		pos = get_rpos(a, (*b)->data);
 		if (pos == -1)
 		{
+			pos = get_lower_pos(a);
+			apply_five(a, pos);
 			pa(a, b, SHOW);
-			if ((*b)->data > (*a)->data)
+			if ((*b) && ((*b)->data > (*a)->data))
 				rra(a, SHOW);
 		}
 		else
+		{
 			apply_five(a, pos);
-		pa(a, b, SHOW);
+			pa(a, b, SHOW);
+		}
 	}
 	pos = get_lower_pos(a);
 	apply_five(a, pos);

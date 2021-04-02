@@ -82,7 +82,8 @@ for ((stack_size = $startRange; stack_size <= $endRange; stack_size++)); do
 	printf "${PURPLE} Generating random numbers for stack_size $stack_size...\n\n${NOCOLOR}"
   for ((testNB = 0; testNB < $TotalNbTest; testNB++)); do
   	printf "${DARKGRAY} TEST $testNB: ${NOCOLOR}"
-	ARG=`./genstack.pl $stack_size -1000 1000` ;
+	#printf "${ARG}"
+	ARG=`./tester/genstack.pl $stack_size -1000 1000` ;
 	"./$1/push_swap" $ARG > push_swap_result.txt ;
 	RESULT_CHECKER=`"./$1/tester/checker" $ARG < push_swap_result.txt`
 	if [[ "$RESULT_CHECKER" = "KO" ]]; then

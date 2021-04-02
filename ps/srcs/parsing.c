@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:55 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/02 14:17:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/02 15:00:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,5 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 		mysize.chunksize = check_all(a, b, ac - 1);
 		algo(a, b, &mysize, SHOW);
 	}
-	/*
-	while (*a) //a supprimer
-	{
-		printf("[%d]\n", (*a)->data);
-		(*a) = (*a)->next;
-	} //
-	*/
 	return (1);
 }
