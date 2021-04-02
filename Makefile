@@ -16,14 +16,14 @@ PS_DIR				=	./ps/
 CK_DIR				=	./ck/
 
 all			:	$(PS_NAME) $(CK_NAME)
-			mv $(PS_DIR)$(PS_NAME) ./
-			mv $(CK_DIR)$(CK_NAME) ./
 
 $(PS_NAME)	:
 			make -C $(PS_DIR)
+			mv $(PS_DIR)$(PS_NAME) ./
 
 $(CK_NAME)	:
 			make -C $(CK_DIR)
+			mv $(CK_DIR)$(CK_NAME) ./
 
 clean		:
 			make clean -C $(PS_DIR)
