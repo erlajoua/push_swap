@@ -12,16 +12,17 @@
 
 #include "../headers/push_swap.h"
 
-int		get_movs(t_algo *algo)
+int		get_movs(t_algo *algo) // 
 {
-	int middle;
 	int first_movs;
+	int second_movs;
 
-	middle = algo->a_len / 2;
 	first_movs = algo->first_pos;
-	if (algo->first_pos > middle)
-		first_movs = (algo->a_len - algo->first_pos) * -1;
-	return (first_movs);
+	second_movs = algo->a_len - algo->second_pos;
+	if (first_movs < second_movs)
+		return (first_movs);
+	second_movs *= -1;
+	return (second_movs);
 }
 
 void	ft_rooftop(t_list **a, t_algo *algo)

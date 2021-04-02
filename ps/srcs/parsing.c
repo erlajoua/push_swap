@@ -89,7 +89,6 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 		i++;
 	}
 	mysize.size = ac - 1;
-	mysize.chunksize = check_all(a, b, ac - 1);
 	if (is_sorted(a))
 		return (1);
 	if (ac - 1 <= 2)
@@ -99,6 +98,9 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 	else if (ac - 1 <= 5)
 		sort_five(a, b, ac);
 	else
+	{
+		mysize.chunksize = check_all(a, b, ac - 1);
 		algo(a, b, &mysize, SHOW);
+	}
 	return (1);
 }

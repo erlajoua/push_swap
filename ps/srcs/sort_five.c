@@ -97,19 +97,46 @@ void	five_loop(t_list **a, t_list **b, int j)
 
 void	sort_five(t_list **a, t_list **b, int ac)
 {
-	(void)a;
-	(void)b;
-	(void)ac;
-	printf("à refaire car je suis nul a chier\n");
-	/*	pb(a, b, 0);
+	int pos;
+	int a_len;
+
+	pb(a, b, 0);
 	if (ac - 1 == 5)
 		pb(a, b, 0);
 	sort_three(a);
-	if (ac - 1 == 5 && ((*b)->data < (*b)->next->data))
-		ft_swap(&((*b)->data), &((*b)->next->data));
-	if (ac - 1 == 5)
-		five_loop(a, b, 2);
+	while ((*b) != NULL)
+	{
+		pos = get_rpos(a, (*b)->data);
+		a_len = list_len(a);
+		if (pos == -1)
+		{
+			pa(a, b, SHOW);
+			if ((*b)->data > (*a)->data)
+				rra(a, SHOW);
+		}
+		else
+		{
+			if (pos > (a_len / 2))
+				pos = pos - a_len;
+			if (pos < 0)
+				while (pos++ < 0)
+					rra(a, SHOW);
+			else
+				while (pos-- > 0)
+					ra(a, SHOW);
+		}
+		pa(a, b, SHOW);
+	}
+	pos = get_lower_pos(a);
+	a_len = list_len(a);
+	if (pos > (a_len / 2))
+		pos = pos - a_len;
+	printf("pos = %d\n", pos);
+	if (pos < 0)
+		while (pos++ < 0)
+			rra(a, SHOW);
 	else
-		five_loop(a, b, 1);
-	end_sort_five(a);*/
+		while (pos-- > 0)
+			ra(a, SHOW);
+	print_list(a, b);
 }

@@ -52,7 +52,7 @@ void	mov_inf(int movs, t_list **b, t_algo *algo)
 	int pos;
 
 	movs = -movs;
-	pos = get_pos(b, algo->h_first);
+	pos = get_pos(b, algo->h_second);
 	if (pos == -1)
 		pos = get_bigger_pos(b);
 	if (pos > algo->b_len / 2)

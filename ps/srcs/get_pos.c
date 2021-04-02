@@ -40,6 +40,34 @@ int		get_pos(t_list **b, int value)
 	return (-1);
 }
 
+int		get_rpos(t_list **a, int value)
+{
+	int		size;
+	int		*tab;
+	int		i;
+
+	size = list_len(a);
+	tab = list_to_tab(a);
+	i = 0;
+	while (i < size - 1)
+	{
+		if (i == 0)
+			if (value > tab[size - 1] && value < tab[i])
+			{
+				free(tab);
+				return (i);
+			}
+		if (value > tab[i] && value < tab[i + 1])
+		{
+			free(tab);
+			return (i + 1);
+		}
+		i++;
+	}
+	free(tab);
+	return (-1);
+}
+
 int		get_bigger_pos(t_list **lst)
 {
 	t_list	*tmp;
@@ -56,6 +84,30 @@ int		get_bigger_pos(t_list **lst)
 		if (tmp->data > bigger)
 		{
 			bigger = tmp->data;
+			pos = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (pos);
+}
+
+int		get_lower_pos(t_list **lst)
+{
+	t_list	*tmp;
+	int		i;
+	int		lower;
+	int		pos;
+
+	tmp = (*lst)->next;
+	i = 1;
+	lower = (*lst)->data;
+	pos = 0;
+	while (tmp)
+	{
+		if (tmp->data < lower)
+		{
+			lower = tmp->data;
 			pos = i;
 		}
 		tmp = tmp->next;
