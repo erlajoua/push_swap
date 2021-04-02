@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:27:36 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/02 15:16:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/02 21:05:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	apply_five(t_list **a, int pos)
 			ra(a, SHOW);
 }
 
-void	sort_five(t_list **a, t_list **b, int ac)
+void	sort_five(t_list **a, t_list **b)
 {
 	int pos;
 
 	pb(a, b, SHOW);
-	if (ac - 1 == 5)
+	if (list_len(a) == 5)
 		pb(a, b, SHOW);
 	sort_three(a);
 	while ((*b) != NULL)

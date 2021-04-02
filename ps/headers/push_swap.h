@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:23:24 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 13:17:09 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:05:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void					rra(t_list **a, int option);
 void					rrb(t_list **b, int option);
 void					rrr(t_list **a, t_list **b, int option);
 void					sort_three(t_list **a);
-void					sort_five(t_list **a, t_list **b, int ac);
+void					sort_five(t_list **a, t_list **b);
 void					sort_general(t_list **a, t_list **b);
 void					sort_onetwo(t_list **a);
 void					fill_tab(t_list **a, int *tab, int index);
