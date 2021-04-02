@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:19:13 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/02 08:28:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/02 08:52:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,6 @@ int		algo(t_list **a, t_list **b, t_size *mysize, int display)
 			algo.a_len = list_len(a);
 			algo.b_len = list_len(b);
 			find_hold(a, &algo);
-			/*if (algo.display == SHOW)
-			{
-				print_list(a, b);
-				printf("h_first : %d\n", algo.h_first);
-				printf("algo->first_hold : %d\n", algo.first_pos);
-			}*/
 			if ((*b) && (*b)->next)
 				get_values(b, &algo);
 			else
@@ -75,8 +69,6 @@ int		algo(t_list **a, t_list **b, t_size *mysize, int display)
 			algo.ret += 1 + algo.ra + algo.rb + algo.rra
 			+ algo.rrb + algo.rr + algo.rrr;
 			apply_rotates(a, b, &algo);
-			//if (algo.display == SHOW)
-			//	print_list(a, b);
 		}
 		algo.ret += swap_to_a(a, b, &algo);
 	}
