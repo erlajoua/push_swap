@@ -12,34 +12,14 @@
 
 #include "../headers/checker.h"
 
-int		check_arg(char *av)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	long n;
+	int i;
 
-	n = long_atoi(av);
-	if (n < -2147483648 || n > 2147483647)
-		return (0);
-	while (*av)
-	{
-		if (*av != '-' && *av != '+' && !ft_isdigit(*av))
-			return (0);
-		av++;
-	}
-	return (1);
-}
-
-int		check_duplicate(t_list **a, int data)
-{
-	t_list	*tmp;
-
-	tmp = *a;
-	while (tmp)
-	{
-		if (tmp->data == data)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 int		get_list_a(t_list **a, int ac, char **av)
@@ -55,7 +35,7 @@ int		get_list_a(t_list **a, int ac, char **av)
 			push_back(a, data);
 		else
 		{
-			write(1, "Error\n", 6);
+			write(STDERR_FILENO, "Error\n", 6);
 			lst_clear(a);
 			return (0);
 		}

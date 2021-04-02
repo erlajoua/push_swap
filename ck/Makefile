@@ -3,15 +3,15 @@ SRCS_DIR		=	./srcs/
 SRCS			=	main.c					\
 					parsing.c				\
 					get_next_line.c			\
-					get_next_line_utils.c	\
-					utils.c
+					get_next_line_utils.c
 PS_SRCS_DIR		=	../ps/srcs/
 SRCS_BASENAME	=	$(addprefix $(SRCS_DIR), $(SRCS))			\
 					$(addprefix $(PS_SRCS_DIR), op_push.c)		\
 					$(addprefix $(PS_SRCS_DIR), op_rotate.c)	\
 					$(addprefix $(PS_SRCS_DIR), op_rrotate.c)	\
 					$(addprefix $(PS_SRCS_DIR), op_swap.c)		\
-					$(addprefix $(PS_SRCS_DIR), ft_list.c)
+					$(addprefix $(PS_SRCS_DIR), ft_list.c)		\
+					$(addprefix $(PS_SRCS_DIR), is_char.c)
 OBJS			=	$(SRCS_BASENAME:.c=.o)
 CC					=	gcc
 FLAGS				=	-Wall -Werror -Wextra

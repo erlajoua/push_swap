@@ -26,22 +26,6 @@ int		is_sorted(t_list **a)
 	return (1);
 }
 
-int		check_str(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str[i] == '+' || str[i] == '-' || is_num(str[i]))
-		i++;
-	while (str[i])
-	{
-		if (!(is_num(str[i])))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int		parse_arg(char *str, t_list **a)
 {
 	char	**strs;
@@ -55,7 +39,7 @@ int		parse_arg(char *str, t_list **a)
 		strs = ft_split(str, ' ');
 		while (strs[i])
 		{
-			if (!(check_str(strs[i])))
+			if (!check_arg(strs[i]) && !check_duplicate(a, ft_atoi(strs[i])))
 				flag = 0;
 			push_back(a, ft_atoi(strs[i]));
 			free(strs[i]);
@@ -63,7 +47,7 @@ int		parse_arg(char *str, t_list **a)
 		}
 		free(strs);
 	}
-	else if (check_str(str))
+	else if (check_arg(str) && check_duplicate(a, ft_atoi(str)))
 		push_back(a, ft_atoi(str));
 	else
 		flag = 0;

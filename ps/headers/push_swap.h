@@ -80,7 +80,9 @@ int						parsing(int ac, char **av, t_list **a, t_list **b);
 int						is_smaller(t_list **lst, int value);
 int						is_bigger(t_list **lst, int value);
 int						is_space(char *str);
-int						is_num(char c);
+int						ft_isdigit(int c);
+int						check_duplicate(t_list **a, int data);
+int						check_arg(char *av);
 int						get_pos(t_list **b, int value);
 int						get_rpos(t_list **a, int value);
 int						*list_to_tab(t_list **lst);
@@ -94,6 +96,7 @@ int						check_all(t_list **a, t_list **b, int size);
 int						algo(t_list **a, t_list **b,
 						t_size *mysize, int display);
 int						swap_to_a(t_list **a, t_list **b, t_algo *algo);
+long					long_atoi(char *str);
 void					push_back(t_list **lst, int data);
 void					push_front(t_list **lst, int data);
 void					print_list(t_list **a, t_list **b);
