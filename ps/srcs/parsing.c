@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:55 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/02 15:00:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/02 15:20:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		parse_arg(char *str, t_list **a)
 
 int		parsing_error(void)
 {
-	ft_putstr_fd("parsing error\n", STDERR_FILENO);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	return (0);
 }
 
