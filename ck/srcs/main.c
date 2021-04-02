@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 11:54:25 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 13:08:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/02 08:49:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,20 @@ int		get_operations(t_list **a, t_list **b)
 {
 	char *line;
 
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line, 0))
 	{
 		if (!(exec_ope(line, a, b)))
 		{
+			lst_clear(a);
+			lst_clear(b);
+			get_next_line(666, NULL, 1);
 			write(1, "Error\n", 6);
 			free(line);
 			return (0);
 		}
 		free(line);
 	}
+	free(line);
 	return (1);
 }
 

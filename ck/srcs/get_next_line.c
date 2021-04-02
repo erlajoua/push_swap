@@ -3,96 +3,131 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vintran <vintran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 15:04:34 by vintran           #+#    #+#             */
-/*   Updated: 2021/03/26 15:55:31 by vintran          ###   ########.fr       */
+/*   Created: 2021/04/02 08:42:50 by user42            #+#    #+#             */
+/*   Updated: 2021/04/02 08:43:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/get_next_line.h"
 
-char	*join_buf(char *s1, char *s2)
+char			*ft_getrest(char *str, int *empty_rest)
 {
-	char	*res;
-	int		reslen;
-	int		i;
-	int		j;
+	char *rest;
 
-	if (!s1 && !s2)
-		return (NULL);
-	reslen = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(res = malloc(reslen)))
-		return (NULL);
-	i = 0;
-	while (s1 && s1[i])
+	*empty_rest = 0;
+	while (*str != '\0')
 	{
-		res[i] = s1[i];
-		i++;
+		if (*str == '\n')
+		{
+			str++;
+			if (!(rest = (char*)malloc(sizeof(char) * ft_strlen(str) + 1)))
+				return (NULL);
+			rest = ft_strcpy(rest, str);
+			return (rest);
+		}
+		str++;
 	}
-	j = 0;
-	while (s2 && s2[j])
-	{
-		res[i + j] = s2[j];
-		j++;
-	}
-	res[i + j] = '\0';
-	free(s1);
-	return (res);
+	*empty_rest = 1;
+	return (NULL);
 }
 
-char	*maj_file(char *file, int newline)
+static int		ft_manage_rest(t_gnl *s, char **line, char **buffer)
 {
-	char	*res;
-	int		restlen;
+	char	*rest;
+	char	*subline;
+	int		empty_rest;
 
-	restlen = ft_strlen(file + newline);
-	if (!(res = ft_strndup(file + newline, restlen)))
-		return (NULL);
-	free(file);
-	return (res);
-}
-
-char	*get_line(char **file)
-{
-	char	*res;
-	int		i;
-
-	i = 0;
-	while ((*file)[i] && (*file)[i] != '\n')
-		i++;
-	if (!(res = ft_strndup(*file, i)))
-		return (NULL);
-	if ((*file)[i] != '\n')
-		i--;
-	if (!(*file = maj_file(*file, i + 1)))
-		return (NULL);
-	return (res);
-}
-
-int		get_next_line(int fd, char **line)
-{
-	int			ret;
-	char		buf[BUFFER_SIZE + 1];
-	static char	*file;
-
-	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+	empty_rest = 0;
+	rest = ft_getrest(*buffer, &empty_rest);
+	if (rest == NULL && empty_rest == 0)
 		return (-1);
-	ret = 1;
-	while (ret && !is_newline(file))
+	if (empty_rest == 1)
 	{
-		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
+		if ((*line = ft_strjoin(*line, *buffer)) == NULL)
 			return (-1);
-		buf[ret] = '\0';
-		if (!(file = join_buf(file, buf)))
-			return (-1);
+		ft_bzero(*buffer, BUFFER_SIZE + 1);
+		return (1);
 	}
-	if (!(*line = get_line(&file)))
-		return (-1);
+	else
+	{
+		if ((subline = ft_getline(*buffer)) == NULL)
+			return (-1);
+		if ((*line = ft_strjoin(*line, subline)) == NULL)
+			return (-1);
+		s->rest = rest;
+		free(subline);
+		return (0);
+	}
+}
+
+static int		ft_rest(t_gnl *s, char **buffer, int fd, char **line)
+{
+	int ret;
+
+	if (s->rest != NULL)
+	{
+		*buffer = ft_strcpy(*buffer, s->rest);
+		free(s->rest);
+		s->rest = NULL;
+	}
+	else
+	{
+		s->nb_bytes = read(fd, *buffer, BUFFER_SIZE);
+		if (s->nb_bytes == 0 && s->flag == 0)
+			return (0);
+		else if (s->nb_bytes < 0)
+			return (-1);
+		else
+			s->flag = 1;
+	}
+	ret = ft_manage_rest(s, line, buffer);
 	if (ret == 0)
-	{
-		free(file);
-		return (ret);
-	}
+		return (2);
+	if (ret == -1)
+		return (-1);
 	return (1);
+}
+
+static int		ft_read(int fd, t_gnl *s, char **line)
+{
+	char	*buffer;
+	int		ret;
+
+	ret = 0;
+	if (!(buffer = malloc(BUFFER_SIZE + 1)))
+		return (-1);
+	ft_bzero(buffer, BUFFER_SIZE + 1);
+	if (!(*line = malloc(1)))
+	{
+		free(buffer);
+		return (-1);
+	}
+	*line[0] = '\0';
+	while (ret != 2)
+	{
+		ret = ft_rest(s, &buffer, fd, line);
+		if (ret <= 0)
+		{
+			free(buffer);
+			return (ret);
+		}
+	}
+	free(buffer);
+	return (s->nb_bytes > 0 || s->rest) ? 1 : 0;
+}
+
+int				get_next_line(int fd, char **line, int option)
+{
+	static t_gnl	s;
+	int				ret;
+
+	if (option == 1)
+		free(s.rest);
+	if ((read(fd, 0, 0) < 0 || fd < 0) != 0 || !line)
+		return (-1);
+	s.flag = 0;
+	ret = ft_read(fd, &s, line);
+	return (ret);
 }
