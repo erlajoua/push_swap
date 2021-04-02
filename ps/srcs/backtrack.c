@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 12:50:56 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 12:59:17 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 14:34:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		check_all(t_list **a, t_list **b, int size)
 	t_check ch;
 
 	init_check(&ch);
-	while (ch.i <= 35)
+	while (ch.i <= 30)
 	{
 		ch.a_cp = lstcpy(a);
 		ch.b_cp = lstcpy(b);
