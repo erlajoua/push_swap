@@ -53,7 +53,7 @@ int		get_operations(t_list **a, t_list **b)
 			lst_clear(a);
 			lst_clear(b);
 			get_next_line(666, NULL, 1);
-			write(1, "Error\n", 6);
+			write(STDERR_FILENO, "Error\n", 6);
 			free(line);
 			return (0);
 		}
