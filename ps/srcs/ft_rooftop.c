@@ -6,13 +6,13 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:19:59 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/02 07:36:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/02 14:08:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-int		get_movs(t_algo *algo) // 
+int		get_movs(t_algo *algo)
 {
 	int first_movs;
 	int second_movs;
