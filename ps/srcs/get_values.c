@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:18:38 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/23 17:39:44 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 08:41:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ void	mov_inf(int movs, t_list **b, t_algo *algo)
 	int pos;
 
 	movs = -movs;
-	pos = get_pos(b, algo->h_second);
+	pos = get_pos(b, algo->h_first);
+	//printf("pos0: %d\n", pos);
 	if (pos == -1)
 		pos = get_bigger_pos(b);
+	//printf("pos1: %d\n", pos);
 	if (pos > algo->b_len / 2)
 		pos = pos - algo->b_len;
+	//printf("pos2: %d, movs : %d\n", pos, movs);
 	if (pos < 0)
 	{
 		pos = -pos;

@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:25:22 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 13:14:25 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 07:30:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 void	sort_three(t_list **a)
 {
-	(void)a;
-	printf("à refaire car je pue la merde\n");
-	/*int		num[3];
+	int		num[3];
 
 	fill_tab(a, num, 3);
 	if ((num[0] > num[1]) && (num[0] < num[2]) && (num[1] < num[2]))
-		sa(a, 0);
+		sa(a, SHOW);
 	else if ((num[0] > num[1]) && (num[1] > num[2]))
 	{
-		sa(a, 0);
-		rra(a, 0);
+		sa(a, SHOW);
+		rra(a, SHOW);
 	}
 	else if ((num[0] > num[1]) && (num[0] > num[1]) && (num[1] < num[2]))
-		ra(a, 0);
+		ra(a, SHOW);
 	else if ((num[0] < num[1]) && (num[0] < num[2]) && (num[1] > num[2]))
 	{
-		sa(a, 0);
-		ra(a, 0);
+		sa(a, SHOW);
+		ra(a, SHOW);
 	}
 	else if ((num[0] < num[1]) && (num[0] > num[2]) && (num[1] > num[2]))
-		rra(a, 0);*/
+		rra(a, SHOW);
 }

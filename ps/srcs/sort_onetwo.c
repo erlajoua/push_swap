@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 20:40:08 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/22 20:43:07 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 07:29:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	sort_onetwo(t_list **a)
 {
-	printf("salut\n");
 	if ((*a)->next)
 	{
 		if ((*a)->data > (*a)->next->data)
-			ft_swap(&(*a)->data, &(*a)->next->data);
+			sa(a, SHOW);
 	}
 }

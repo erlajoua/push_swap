@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:55 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 12:50:18 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 08:40:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,3 +102,4 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 		algo(a, b, &mysize, SHOW);
 	return (1);
 }
+

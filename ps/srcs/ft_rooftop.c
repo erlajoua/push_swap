@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:19:59 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/01 12:50:31 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 07:36:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,12 @@ int		get_movs(t_algo *algo)
 {
 	int middle;
 	int first_movs;
-	int second_movs;
 
 	middle = algo->a_len / 2;
 	first_movs = algo->first_pos;
 	if (algo->first_pos > middle)
 		first_movs = (algo->a_len - algo->first_pos) * -1;
-	second_movs = algo->a_len - algo->second_pos * -1;
-	if (algo->second_pos < middle)
-		second_movs = algo->second_pos;
-	if (first_movs < second_movs)
-		return (first_movs);
-	return (second_movs);
+	return (first_movs);
 }
 
 void	ft_rooftop(t_list **a, t_algo *algo)

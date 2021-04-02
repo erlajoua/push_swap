@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 18:05:39 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 18:59:49 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 07:52:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rra(t_list **a, int option)
 	tmp->next = *a;
 	(*a)->prev = tmp;
 	*a = tmp;
-	if (option == 1)
+	if (option == SHOW)
 		printf("rra\n");
 }
 
@@ -44,14 +44,14 @@ void	rrb(t_list **b, int option)
 	tmp->next = *b;
 	(*b)->prev = tmp;
 	*b = tmp;
-	if (option == 1)
+	if (option == SHOW)
 		printf("rrb\n");
 }
 
 void	rrr(t_list **a, t_list **b, int option)
 {
-	rra(a, 0);
-	rrb(b, 0);
-	if (option == 1)
+	rra(a, HIDE);
+	rrb(b, HIDE);
+	if (option == SHOW)
 		printf("rrr\n");
 }

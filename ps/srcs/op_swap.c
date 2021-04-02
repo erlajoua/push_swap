@@ -6,7 +6,7 @@
 /*   By: erlajoua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:00:31 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/03/18 18:47:43 by erlajoua         ###   ########.fr       */
+/*   Updated: 2021/04/02 07:52:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	sa(t_list **a, int option)
 	curr = *a;
 	next = (*a)->next;
 	ft_swap(&(curr->data), &(next->data));
-	if (option == 1)
+	if (option == SHOW)
 		printf("sa\n");
 }
 
@@ -45,14 +45,14 @@ void	sb(t_list **b, int option)
 	curr = *b;
 	next = (*b)->next;
 	ft_swap(&(curr->data), &(next->data));
-	if (option == 1)
+	if (option == SHOW)
 		printf("sb\n");
 }
 
 void	ss(t_list **a, t_list **b, int option)
 {
-	sa(a, 0);
-	sb(b, 0);
-	if (option == 1)
+	sa(a, HIDE);
+	sb(b, HIDE);
+	if (option == SHOW)
 		printf("ss\n");
 }
