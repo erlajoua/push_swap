@@ -18,7 +18,7 @@ SRCS_BASENAME	=	$(addprefix $(SRCS_DIR), $(SRCS))			\
 					$(addprefix $(PS_SRCS_DIR), is_char.c)
 OBJS			=	$(SRCS_BASENAME:.c=.o)
 
-CC					=	gcc
+CC					=	clang
 
 FLAGS				=	-Wall -Werror -Wextra
 

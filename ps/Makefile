@@ -25,7 +25,7 @@ SRCS			=	main.c			\
 					backtrack.c
 SRCS_BASENAME	=	$(addprefix $(SRCS_DIR), $(SRCS))
 OBJS			=	$(SRCS_BASENAME:.c=.o)
-CC					=	gcc
+CC					=	clang
 FLAGS				=	-Wall -Werror -Wextra
 
 .c.o		:

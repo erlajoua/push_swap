@@ -6,7 +6,7 @@
 /*   By: erlajoua <erlajoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 18:50:55 by erlajoua          #+#    #+#             */
-/*   Updated: 2021/04/02 21:05:36 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/03 11:21:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ int		parsing(int ac, char **av, t_list **a, t_list **b)
 	mysize.size = list_len(a);
 	if (is_sorted(a))
 		return (1);
-	if (list_len(a) <= 2)
+	if (mysize.size <= 2)
 		sort_onetwo(a);
-	else if (list_len(a) == 3)
+	else if (mysize.size == 3)
 		sort_three(a);
-	else if (list_len(a) <= 5)
+	else if (mysize.size <= 5)
 		sort_five(a, b);
 	else
 	{
